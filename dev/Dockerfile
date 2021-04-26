@@ -37,7 +37,7 @@ RUN yum -y install epel-release && \
     yum clean all && \
     rm -rf /var/cache/yum
 
-ARG GIT_CLONE_ARGS="--depth 1 https://github.com/rucio/rucio.git"
+ARG GIT_CLONE_ARGS="--depth 1 https://github.com/slaclab/rucio.git "
 
 RUN git clone $GIT_CLONE_ARGS /tmp/rucio && rm -rf /tmp/rucio/.git
 
@@ -64,7 +64,7 @@ RUN python3 -m pip install --no-cache --upgrade pip && \
     ln -s $RUCIOHOME/lib/rucio /usr/local/lib/python3.6/site-packages/rucio
 
 #additional configuration for fts-rest-cli
-RUN pip2 install requests 
+RUN pip2 install requests
 
 COPY .pep8 .pep8
 COPY .flake8 .flake8
